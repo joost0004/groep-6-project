@@ -14,7 +14,7 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        return view('', ['registrations' => Registration::latest()->get()]);
+        return view('registrations.index', ['registrations' => Registration::all()]);
     }
 
     /**
@@ -57,7 +57,9 @@ class RegistrationController extends Controller
      */
     public function edit(Registration $registration)
     {
-        //
+        return view('registrations.edit', [
+            'registration' => $registration
+        ]);
     }
 
     /**
@@ -69,7 +71,12 @@ class RegistrationController extends Controller
      */
     public function update(Request $request, Registration $registration)
     {
-        //
+        $registration->update(request()->validate([
+            'voornaam' => 'required'
+        ]));
+
+        return redirect('/registration');
+
     }
 
     /**
@@ -80,7 +87,8 @@ class RegistrationController extends Controller
      */
     public function destroy(Registration $registration)
     {
-        //
+        $registration->delete();
+        return redirect('/registration');
     }
 
 
