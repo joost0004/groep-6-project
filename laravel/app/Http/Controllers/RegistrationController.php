@@ -14,7 +14,7 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        //
+        return view('', ['registrations' => Registration::latest()->get()]);
     }
 
     /**
@@ -82,4 +82,6 @@ class RegistrationController extends Controller
     {
         //
     }
+
+
 }

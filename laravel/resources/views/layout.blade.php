@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     </head>
     <body>
+
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
               <a class="navbar-item" href="https://www.kledingbank-zeeland.nl/">
@@ -34,6 +35,30 @@
                   </div>
                 </div>
               </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Thud</td>
+                    <td>Wombat</td>
+                    <td>Gecreëerd Op</td>
+                    <td>Geupdated Op</td>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($foos as $foo)
+                    <tr>
+                        <td>{{ $foo->id }}</td>
+                        <td>{{  }}</td>
+                        <td>{{  }}</td>
+                        <td>{{  }}</td>
+                        <td>{{  }}</td>
+                        <td>{{  }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
               </div>
             </div>
           </nav>
