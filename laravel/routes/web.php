@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\RegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,7 @@ use App\Http\Controllers\IndexController;
 */
 
 Route::get('/', [IndexController::class, 'show']);
+Route::resource('/registration', RegistrationController::class);
 
 // Route::get('/', function () {
 //     return view('welcome');
