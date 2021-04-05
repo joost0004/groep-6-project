@@ -14,7 +14,7 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        //
+        return view('registrations.index', ['registrations' => Registration::all()]);
     }
 
     /**
@@ -46,7 +46,7 @@ class RegistrationController extends Controller
      */
     public function show(Registration $registration)
     {
-        //
+        return view('registrations.show', ['registration' => $registration]);
     }
 
     /**
