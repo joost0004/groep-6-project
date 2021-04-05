@@ -36,6 +36,6 @@
         </tbody>
     </table>
     <form action="/registration/{{$registration->id}}/edit">
-        <button type="submit">Aanpassen</button>
+        <button type="submit" class='button is-link'>Aanpassen</button>
     </form>
 @endsection

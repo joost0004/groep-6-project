@@ -17,7 +17,7 @@
                 <td>{{ $registration->geslacht }}</td>
                 <td>{{ $registration->verwijzer }}</td>
                 <td>    <form action="/registration/{{$registration->id}}">
-                        <button type="submit">Bekijk</button>
+                        <button class='button is-link' type="submit">Bekijk</button>
                     </form>
                 </td>
             </tr>

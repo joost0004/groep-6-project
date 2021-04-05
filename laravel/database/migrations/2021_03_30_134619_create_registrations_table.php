@@ -27,7 +27,7 @@ class CreateRegistrationsTable extends Migration
             $table->decimal('kind')->nullable();
             $table->boolean('linnen')->nullable();
             $table->boolean('speelgoed')->nullable();
-            $table->boolean('volwassen');
+            $table->boolean('volwassen')->nullable();
             $table->timestamps();
         });
     }
