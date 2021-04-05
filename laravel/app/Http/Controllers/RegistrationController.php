@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Registration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RegistrationController extends Controller
 {
@@ -24,7 +25,7 @@ class RegistrationController extends Controller
      */
     public function create()
     {
-        //
+        return view('registrations.create');
     }
 
     /**
@@ -33,9 +34,11 @@ class RegistrationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        Registration::create($this->validateRequirement());
+        return redirect('/requirement');
+
     }
 
     /**
@@ -57,7 +60,7 @@ class RegistrationController extends Controller
      */
     public function edit(Registration $registration)
     {
-        //
+
     }
 
     /**
@@ -69,7 +72,9 @@ class RegistrationController extends Controller
      */
     public function update(Request $request, Registration $registration)
     {
-        //
+        $registration -> update($this->validateRequirement());
+        return redirect('/registration/' . $registration->id);
+
     }
 
     /**
@@ -82,4 +87,6 @@ class RegistrationController extends Controller
     {
         //
     }
+
+
 }
