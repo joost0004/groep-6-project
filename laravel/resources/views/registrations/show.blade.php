@@ -11,6 +11,11 @@
             <td>Gemeente</td>
             <td>Regio</td>
             <td>Verwijzer</td>
+            <td>Partner</td>
+            <td>Kind</td>
+            <td>Linnen</td>
+            <td>Speelgoed</td>
+            <td>Volwassen</td>
         </tr>
         </thead>
         <tbody>
@@ -22,6 +27,11 @@
                 <td>{{ $registration->gemeente }}</td>
                 <td>{{ $registration->regio }}</td>
                 <td>{{ $registration->verwijzer }}</td>
+                <td>{{ $registration->partner }}</td>
+                <td>{{ $registration->kind }}</td>
+                <td>{{ $registration->linnen }}</td>
+                <td>{{ $registration->speelgoed }}</td>
+                <td>{{ $registration->volwassen }}</td>
             </tr>
         </tbody>
     </table>
