@@ -57,9 +57,8 @@ class RegistrationController extends Controller
      */
     public function edit(Registration $registration)
     {
-        return view('registrations.edit', [
-            'registration' => $registration
-        ]);
+        $registration -> edit($this->validateRequirement());
+        return redirect('/registration/' . $registration->id);
     }
 
     /**
@@ -71,12 +70,8 @@ class RegistrationController extends Controller
      */
     public function update(Request $request, Registration $registration)
     {
-        $registration->update(request()->validate([
-            'voornaam' => 'required'
-        ]));
-
-        return redirect('/registration');
-
+        $registration -> update($this->validateRequirement());
+        return redirect('/registration/' . $registration->id);
     }
 
     /**
@@ -91,5 +86,17 @@ class RegistrationController extends Controller
         return redirect('/registration');
     }
 
+    public function validateRequirement():array{
+        return request()->validate([
+            'voorletters' => 'required',
+            'voornaam' => 'required',
+            'geslacht' => 'required',
+            'adres' => 'required',
+            'postcode' => 'required',
+            'gemeente' => 'required',
+            'regio' => 'required',
+            'vewijzer' => 'required'
+        ]);
+    }
 
 }
