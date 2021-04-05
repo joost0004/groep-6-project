@@ -15,7 +15,7 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        //
+        return view('registrations.index', ['registrations' => Registration::all()]);
     }
 
     /**
@@ -49,7 +49,7 @@ class RegistrationController extends Controller
      */
     public function show(Registration $registration)
     {
-        //
+        return view('registrations.show', ['registration' => $registration]);
     }
 
     /**
@@ -60,7 +60,8 @@ class RegistrationController extends Controller
      */
     public function edit(Registration $registration)
     {
-
+        $registration -> edit($this->validateRequirement());
+        return redirect('/registration/' . $registration->id);
     }
 
     /**
@@ -74,7 +75,6 @@ class RegistrationController extends Controller
     {
         $registration -> update($this->validateRequirement());
         return redirect('/registration/' . $registration->id);
-
     }
 
     /**
@@ -85,8 +85,21 @@ class RegistrationController extends Controller
      */
     public function destroy(Registration $registration)
     {
-        //
+        $registration->delete();
+        return redirect('/registration');
     }
 
+    public function validateRequirement():array{
+        return request()->validate([
+            'voorletters' => 'required',
+            'voornaam' => 'required',
+            'geslacht' => 'required',
+            'adres' => 'required',
+            'postcode' => 'required',
+            'gemeente' => 'required',
+            'regio' => 'required',
+            'vewijzer' => 'required'
+        ]);
+    }
 
 }
