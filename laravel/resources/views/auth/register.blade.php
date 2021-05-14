@@ -23,7 +23,7 @@
             <div class="mt-4">
                 <x-label for="name" :value="__('Function')" />
 
-                <input type="radio" id="customer" name="function" value="customer">
+                <input type="radio" id="customer" name="function" value="customer" checked>
                 <label for="customer">Klant</label><br>
                 <input type="radio" id="werknemer" name="function" value="werknemer">
                 <label for="werknemer">Werknemer</label><br>
