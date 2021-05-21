@@ -15,7 +15,9 @@
 
 <div class="container">
     <br />
-    <h1 class="text-center text-primary"><u>Kledingbank Zeeland agenda</u></h1>
+    <a href="/">
+        <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+    </a>
     <br />
 
     <div id="calendar"></div>
