@@ -7,6 +7,7 @@ use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Verf\FunctionController;
 use GuzzleHttp\Middleware;
+use App\Http\Controllers\CalenderController;
 
 
 $user = Auth::user();
@@ -53,3 +54,7 @@ Route::get('/', function () {
 // }
 
 require __DIR__.'/auth.php';
+
+Route::get('calender', [CalenderController::class, 'index']);
+
+Route::post('calender/action', [CalenderController::class, 'action']);
