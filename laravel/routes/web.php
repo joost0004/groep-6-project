@@ -42,3 +42,7 @@ require __DIR__.'/auth.php';
 Route::get('calender', [CalenderController::class, 'index']);
 
 Route::post('calender/action', [CalenderController::class, 'action']);
+
+Route::get('/500', function() {
+    return view('errors/500');
+});
