@@ -27,10 +27,13 @@
                   <div class="navbar-dropdown">
                     <a class="navbar-item" href="/">
                       Home
+
                     </a>
                     <hr class="navbar-divider">
                     <a class="navbar-item">
                       Registratie
+
+
                     </a>
                   </div>
                 </div>

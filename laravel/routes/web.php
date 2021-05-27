@@ -55,6 +55,6 @@ Route::get('/', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('calender', [CalenderController::class, 'index']);
+Route::get('calender', [CalenderController::class, 'index'])->middleware(['auth'])->name('index');
 
 Route::post('calender/action', [CalenderController::class, 'action']);
