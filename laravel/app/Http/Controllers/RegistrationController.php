@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Registration;
+use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class RegistrationController extends Controller
 {
@@ -15,7 +17,7 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        return view('registrations.index', ['registrations' => Registration::all()]);
+        return view('registrations.index', ['registrations' => User::all()]);
     }
 
     /**
@@ -36,18 +38,35 @@ class RegistrationController extends Controller
      */
     public function store(Request $request)
     {
-        Registration::create($request->validate([
-            'voorletters' => 'required',
-            'voornaam' => 'required',
-            'geslacht' => 'required',
-            'adres' => 'required',
-            'postcode' => 'required',
-            'gemeente' => 'required',
-            'regio' => 'required',
-            'verwijzer' => 'required'
-        ]));
-        return redirect('/registration');
+        $request->validate([
+            'function' => 'required|string',
+            'voornaam' => 'required|string|max:20',
+            'achternaam' => 'required|string|max:20',
+            'geslacht' => 'required|string|max:10',
+            'postcode' => 'required|string|max:6',
+            'adres' => 'required|string|max:50',
+            'stad' => 'required|string|max:20',
+            'verwijzer' => 'required|string|max:40',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|confirmed|min:8',
+        ]);
 
+        $user = User::create([
+            'function' => $request->function,
+            'voornaam' => $request->voornaam,
+            'achternaam' => $request->achternaam,
+            'geslacht' => $request->geslacht,
+            'postcode' => $request->postcode,
+            'adres' => $request->adres,
+            'stad' => $request->stad,
+            'verwijzer' => $request->verwijzer,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        event(new Registered($user));
+
+        return redirect('/registration');
     }
 
     /**
@@ -56,7 +75,7 @@ class RegistrationController extends Controller
      * @param  \App\Models\Registration  $registration
      * @return \Illuminate\Http\Response
      */
-    public function show(Registration $registration)
+    public function show(User $registration)
     {
         return view('registrations.show', ['registration' => $registration]);
     }
@@ -67,7 +86,7 @@ class RegistrationController extends Controller
      * @param  \App\Models\Registration  $registration
      * @return \Illuminate\Http\Response
      */
-    public function edit(Registration $registration)
+    public function edit(User $registration)
     {
         return view('registrations.edit', compact('registration'));
     }
@@ -79,12 +98,18 @@ class RegistrationController extends Controller
      * @param  \App\Models\Registration  $registration
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Registration $registration)
+    public function update(Request $request, User $registration)
     {
-        // $registration -> update($this->validateRequirement());
-
         $registration->update($request->validate([
-            'voornaam'=>'required'
+            'function' => 'required|string',
+            'voornaam' => 'required|string|max:20',
+            'achternaam' => 'required|string|max:20',
+            'geslacht' => 'required|string|max:10',
+            'postcode' => 'required|string|max:6',
+            'adres' => 'required|string|max:50',
+            'stad' => 'required|string|max:20',
+            'verwijzer' => 'required|string|max:40',
+            'email' => 'required|string|email|max:255',
         ]));
         return redirect('/registration/' . $registration->id);
     }
@@ -95,24 +120,10 @@ class RegistrationController extends Controller
      * @param  \App\Models\Registration  $registration
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Registration $registration)
+    public function destroy(User $registration)
     {
         $registration->delete();
         return redirect('/registration');
-    }
-
-    public function validateRequirement(): array
-    {
-        return request()->validate([
-            'voorletters' => 'required',
-            'voornaam' => 'required',
-            'geslacht' => 'required',
-            'adres' => 'required',
-            'postcode' => 'required',
-            'gemeente' => 'required',
-            'regio' => 'required',
-            'vewijzer' => 'required'
-        ]);
     }
 
 }

@@ -34,6 +34,9 @@ Route::get('/', function () {
         case 'customer':
             return view('functions.customer.index');
             break;
+        case 'guest':
+            return view('functions.guest.index');
+            break;
     }
 })->middleware(['auth'])->name('index');
 

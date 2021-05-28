@@ -2,59 +2,110 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500"/>
             </a>
         </x-slot>
 
         <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        <x-auth-validation-errors class="mb-4" :errors="$errors"/>
 
         <form method="POST" action="{{ route('register') }}">
-            @csrf
+        @csrf
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
-
-            <!-- Function -->
+        <!-- Function -->
             <div class="mt-4">
-                <x-label for="name" :value="__('Function')" />
+                <x-label for="name" :value="__('Function')"/>
 
-                <input type="radio" id="customer" name="function" value="customer" checked>
-                <label for="customer">Klant</label><br>
-                <input type="radio" id="werknemer" name="function" value="werknemer">
-                <label for="werknemer">Werknemer</label><br>
-                <input type="radio" id="admin" name="function" value="admin">
-                <label for="admin">Admin</label>
+                <input type="radio" id="guest" name="function" value="guest" checked>
+                <label for="guest">Guest</label><br>
+{{--                <input type="radio" id="customer" name="function" value="customer">--}}
+{{--                <label for="customer">Klant</label><br>--}}
+{{--                <input type="radio" id="werknemer" name="function" value="werknemer">--}}
+{{--                <label for="werknemer">Werknemer</label><br>--}}
+{{--                <input type="radio" id="admin" name="function" value="admin">--}}
+{{--                <label for="admin">Admin</label>--}}
             </div>
+
+            <!-- Voornaam -->
+            <div>
+                <x-label for="voornaam" :value="__('Voornaam')"/>
+
+                <x-input id="voornaam" class="block mt-1 w-full" type="text" name="voornaam" :value="old('voornaam')" required
+                         autofocus/>
+            </div>
+
+            <!-- Achternaam -->
+            <div>
+                <x-label for="achternaam" :value="__('Achternaam')"/>
+
+                <x-input id="achternaam" class="block mt-1 w-full" type="text" name="achternaam" :value="old('achternaam')" required
+                         autofocus/>
+            </div>
+
+            <!-- Geslacht -->
+            <div>
+                <x-label for="geslacht" :value="__('Geslacht')"/>
+
+                <x-input id="geslacht" class="block mt-1 w-full" type="text" name="geslacht" :value="old('geslacht')" required
+                         autofocus/>
+            </div>
+
+            <!-- Postcode -->
+            <div>
+                <x-label for="postcode" :value="__('Postcode')"/>
+
+                <x-input id="postcode" class="block mt-1 w-full" type="text" name="postcode" :value="old('postcode')" required
+                         autofocus/>
+            </div>
+
+            <!-- Adres -->
+            <div>
+                <x-label for="adres" :value="__('Adres')"/>
+
+                <x-input id="adres" class="block mt-1 w-full" type="text" name="adres" :value="old('adres')" required
+                         autofocus/>
+            </div>
+
+            <!-- Stad -->
+            <div>
+                <x-label for="stad" :value="__('Stad')"/>
+
+                <x-input id="stad" class="block mt-1 w-full" type="text" name="stad" :value="old('stad')" required
+                         autofocus/>
+            </div>
+
+            <!-- Verwijzer -->
+{{--            <div>--}}
+{{--                <x-label for="verwijzer" :value="__('Verwijzer')"/>--}}
+
+{{--                <x-input id="verwijzer" class="block mt-1 w-full" type="text" name="verwijzer" :value="old('verwijzer')" required--}}
+{{--                         autofocus/>--}}
+{{--            </div>--}}
 
             <!-- Email Address -->
             <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
+                <x-label for="email" :value="__('Email')"/>
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required/>
             </div>
 
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+                <x-label for="password" :value="__('Password')"/>
 
                 <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
+                         type="password"
+                         name="password"
+                         required autocomplete="new-password"/>
             </div>
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+                <x-label for="password_confirmation" :value="__('Confirm Password')"/>
 
                 <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
+                         type="password"
+                         name="password_confirmation" required/>
             </div>
 
             <div class="flex items-center justify-end mt-4">
@@ -69,5 +120,5 @@
         </form>
     </x-auth-card>
 </x-guest-layout>
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}" defer></script>
