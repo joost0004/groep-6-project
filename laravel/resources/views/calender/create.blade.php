@@ -1,6 +1,8 @@
 @extends('layout')
 
 @section('content')
+{{-- <link href="~bulma-calendar/dist/css/bulma-calendar.min.css" rel="stylesheet">
+<script src="~bulma-calendar/dist/js/bulma-calendar.min.js"></script> --}}
 
 <div id='wrapper'>
     <div id='page' class='container'>
