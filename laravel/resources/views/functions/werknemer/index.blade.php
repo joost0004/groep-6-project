@@ -6,16 +6,20 @@
 
     <nav class="level">
         <div class="level-item has-text-centered">
+            <a href="/calender">
             <div class="box">
                 <p class="heading">Agenda</p>
                 <img src="/img/agenda-icon.png">
               </div>
+            </a>
         </div>
         <div class="level-item has-text-centered">
+            <a href="/registration">
             <div class="box">
                 <p class="heading">Klant</p>
                 <img src="/img/user-icon.png">
               </div>
+            </a>
         </div>
       </nav>
   </section>
