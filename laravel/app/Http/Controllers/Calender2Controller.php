@@ -36,7 +36,7 @@ class Calender2Controller extends Controller
      */
     public function create()
     {
-        return view('registrations.create');
+        return view('calender.create');
     }
 
     /**
@@ -57,7 +57,7 @@ class Calender2Controller extends Controller
             'regio' => 'required',
             'verwijzer' => 'required'
         ]));
-        return redirect('/registration');
+        return redirect('/calender');
 
     }
 
@@ -80,7 +80,7 @@ class Calender2Controller extends Controller
      */
     public function edit(Registration $registration)
     {
-        return view('registrations.edit', compact('registration'));
+        return view('calender.create', compact('registration'));
     }
 
     /**
@@ -97,7 +97,7 @@ class Calender2Controller extends Controller
         $registration->update($request->validate([
             'voornaam'=>'required'
         ]));
-        return redirect('/registration/' . $registration->id);
+        return redirect('/calender/' . $registration->id);
     }
 
     /**
@@ -109,7 +109,7 @@ class Calender2Controller extends Controller
     public function destroy(Registration $registration)
     {
         $registration->delete();
-        return redirect('/registration');
+        return redirect('/calender');
     }
 
     public function validateRequirement(): array

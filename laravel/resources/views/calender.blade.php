@@ -14,11 +14,16 @@
 <body>
 
 <div class="container">
+
     <br />
     <a href="/">
         <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
     </a>
+
+
+    <button class="float-right" href="/calender/create"> Nieuwe afspraak </button>
     <br />
+
 
     <div id="calendar"></div>
 
