@@ -8,7 +8,7 @@
 
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-              <a class="navbar-item" href="https://www.kledingbank-zeeland.nl/">
+              <a class="navbar-item" href="/">
                 <img src="/img/logo.png">
               </a>
 
@@ -30,7 +30,7 @@
 
                     </a>
                     <hr class="navbar-divider">
-                    <a class="navbar-item">
+                    <a class="navbar-item" href="/registration">
                       Registratie
 
 
@@ -51,7 +51,7 @@
 
                 <div class="navbar-item has-dropdown is-hoverable">
                   <a class="navbar-link">
-                    <div>{{ Auth::user()->name }}</div>
+                    <div>{{ Auth::user()->voornaam }} {{ Auth::user()->achternaam }}</div>
                   </a>
 
                   <div class="navbar-dropdown">

@@ -43,6 +43,7 @@ Route::resource('/registration', RegistrationController::class);
 // })->middleware(['auth'])->name('index');
 Route::resource('/', IndexController::class)->middleware(['auth']);
 
+
 require __DIR__.'/auth.php';
 
 //Route::get('calender', [CalenderController::class, 'index'])->middleware(['auth'])->name('index');
@@ -50,6 +51,14 @@ Route::resource('/calender', Calender2Controller::class);
 
 Route::post('calender/action', [CalenderController::class, 'action']);
 
+
+Route::get('/customer', function() {
+    return view('functions/customer/show');
+});
+
+Route::get('/admin', function() {
+    return view('functions/admin/show');
+});
+
 // Admin routes
 Route::resource('admin', AdminPageController::class)->middleware(['auth']);
-
