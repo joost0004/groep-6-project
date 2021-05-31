@@ -12,20 +12,6 @@
         <form method="POST" action="{{ route('register') }}">
         @csrf
 
-        <!-- Function -->
-            <div class="mt-4">
-                <x-label for="name" :value="__('Function')"/>
-
-                <input type="radio" id="guest" name="function" value="guest" checked>
-                <label for="guest">Guest</label><br>
-{{--                <input type="radio" id="customer" name="function" value="customer">--}}
-{{--                <label for="customer">Klant</label><br>--}}
-{{--                <input type="radio" id="werknemer" name="function" value="werknemer">--}}
-{{--                <label for="werknemer">Werknemer</label><br>--}}
-{{--                <input type="radio" id="admin" name="function" value="admin">--}}
-{{--                <label for="admin">Admin</label>--}}
-            </div>
-
             <!-- Voornaam -->
             <div>
                 <x-label for="voornaam" :value="__('Voornaam')"/>
@@ -42,13 +28,19 @@
                          autofocus/>
             </div>
 
-            <!-- Geslacht -->
-            <div>
-                <x-label for="geslacht" :value="__('Geslacht')"/>
+        <!-- Geslacht -->
+        <div class="mt-4">
+            <x-label for="name" :value="__('Geslacht')"/>
 
-                <x-input id="geslacht" class="block mt-1 w-full" type="text" name="geslacht" :value="old('geslacht')" required
-                         autofocus/>
-            </div>
+            <input type="radio" id="male" name="geslacht" value="male">
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="geslacht" value="female">
+            <label for="female">Female</label><br>
+{{--                <input type="radio" id="werknemer" name="function" value="werknemer">--}}
+{{--                <label for="werknemer">Werknemer</label><br>--}}
+{{--                <input type="radio" id="admin" name="function" value="admin">--}}
+{{--                <label for="admin">Admin</label>--}}
+        </div>
 
             <!-- Postcode -->
             <div>

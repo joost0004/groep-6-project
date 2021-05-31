@@ -41,7 +41,7 @@ class RegistrationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'function' => 'required|string',
+            'function' => 'nullable|string',
             'voornaam' => 'required|string|max:20',
             'achternaam' => 'required|string|max:20',
             'geslacht' => 'required|string|max:10',
