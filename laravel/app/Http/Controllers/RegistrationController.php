@@ -17,7 +17,9 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        return view('registrations.index', ['registrations' => User::all()]);
+        $registrationscustomer = DB::table('users')->where('function', 'customer')->get();
+
+        return view('registrations.index', ['registrationscustomer' => $registrationscustomer]);
     }
 
     /**

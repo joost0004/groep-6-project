@@ -46,6 +46,14 @@ Route::get('calender', [CalenderController::class, 'index']);
 
 Route::post('calender/action', [CalenderController::class, 'action']);
 
+Route::get('/customer', function() {
+    return view('functions/customer/show');
+});
+
+Route::get('/admin', function() {
+    return view('functions/admin/show');
+});
+
 Route::get('/500', function() {
     return view('errors/500');
 });

@@ -2,7 +2,7 @@
 
 @section('content')
 <h1 style="font-size: 30px; font-weight: bold; text-align: center;">Admin</h1>
-<section class="section is-large">
+<section class="section is-medium">
 
     <nav class="level">
         <div class="level-item has-text-centered">
@@ -14,15 +14,17 @@
             </a>
         </div>
         <div class="level-item has-text-centered">
+            <a href="/admin">
             <div class="box">
                 <p class="heading">Admin</p>
                 <img src="/img/admin-icon.png">
               </div>
+            </a>
         </div>
         <div class="level-item has-text-centered">
             <a href="/registration">
             <div class="box">
-                <p class="heading">Klant</p>
+                <p class="heading">Klanten</p>
                 <img src="/img/user-icon.png">
               </div>
             </a>

@@ -2,7 +2,7 @@
 
 @section('content')
     <h1 style="font-size: 30px; font-weight: bold; text-align: center;">Werknemer</h1>
-<section class="section is-large">
+<section class="section is-medium">
 
     <nav class="level">
         <div class="level-item has-text-centered">

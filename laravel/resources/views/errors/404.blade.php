@@ -10,7 +10,7 @@
 </head>
 <body>
 <a href="https://www.kledingbank-zeeland.nl/">
-<img style="width: 300px; height: 120px;" src="/img/logo.png">
+<img style="width: 150px; height: 60px;" src="/img/logo.png">
 </a>
 <h1 style="text-align: center; font-weight: bold; font-size: 100px;">404</h1>
 <h2 style="text-align: center; font-size: 30px;">Oeps, we hebben u naar een niet bestaande pagina gestuurd.<br>Klik hieronder om terug te gaan naar de hoofdpagina!</h2>

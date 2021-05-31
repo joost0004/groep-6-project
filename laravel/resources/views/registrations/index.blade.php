@@ -18,7 +18,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($registrations as $registration)
+        @foreach($registrationscustomer as $registration)
             <tr>
                 <td>{{ $registration->function }}</td>
                 <td>{{ $registration->voornaam }}</td>
