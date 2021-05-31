@@ -17,7 +17,7 @@
             <a href="/admin">
             <div class="box">
                 <p class="heading">Admin</p>
-                <img src="/img/admin-icon.png">
+                <img src="/img/admin-icon.png" href="/admin">
               </div>
             </a>
         </div>

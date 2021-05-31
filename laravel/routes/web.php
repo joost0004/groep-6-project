@@ -1,12 +1,15 @@
 <?php
 
 
+use App\Http\Controllers\Calender2Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Middleware;
 use App\Http\Controllers\CalenderController;
+use App\Http\Controllers\AdminPageController;
+
 
 
 /*
@@ -23,28 +26,31 @@ use App\Http\Controllers\CalenderController;
 // Route::get('/', [IndexController::class, 'show']);
 Route::resource('/registration', RegistrationController::class);
 
-Route::get('/', function () {
-    switch (Auth::user()->function) {
-        case 'admin':
-            return view('functions.admin.index');
-            break;
-        case 'werknemer':
-            return view('functions.werknemer.index');
-            break;
-        case 'customer':
-            return view('functions.customer.index');
-            break;
-        case 'guest':
-            return view('functions.guest.index');
-            break;
-    }
-})->middleware(['auth'])->name('index');
+
+// General routing
+// Route::get('/', function () {
+//     switch (Auth::user()->function) {
+//         case 'admin':
+//             return view('functions.admin.index');
+//             break;
+//         case 'werknemer':
+//             return view('functions.werknemer.index');
+//             break;
+//         case 'customer':
+//             return view('functions.customer.index');
+//             break;
+//     }
+// })->middleware(['auth'])->name('index');
+Route::resource('/', IndexController::class)->middleware(['auth']);
+
 
 require __DIR__.'/auth.php';
 
-Route::get('calender', [CalenderController::class, 'index']);
+//Route::get('calender', [CalenderController::class, 'index'])->middleware(['auth'])->name('index');
+Route::resource('/calender', Calender2Controller::class);
 
 Route::post('calender/action', [CalenderController::class, 'action']);
+
 
 Route::get('/customer', function() {
     return view('functions/customer/show');
@@ -54,6 +60,5 @@ Route::get('/admin', function() {
     return view('functions/admin/show');
 });
 
-Route::get('/500', function() {
-    return view('errors/500');
-});
+// Admin routes
+Route::resource('admin', AdminPageController::class)->middleware(['auth']);
