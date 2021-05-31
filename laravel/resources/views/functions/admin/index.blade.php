@@ -14,7 +14,7 @@
         <div class="level-item has-text-centered">
             <div class="box">
                 <p class="heading">Admin</p>
-                <img src="/img/admin-icon.png">
+                <img src="/img/admin-icon.png" href="/admin">
               </div>
         </div>
         <div class="level-item has-text-centered">

@@ -8,6 +8,8 @@ use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Middleware;
 use App\Http\Controllers\CalenderController;
+use App\Http\Controllers\AdminPageController;
+
 
 
 /*
@@ -24,19 +26,22 @@ use App\Http\Controllers\CalenderController;
 // Route::get('/', [IndexController::class, 'show']);
 Route::resource('/registration', RegistrationController::class);
 
-Route::get('/', function () {
-    switch (Auth::user()->function) {
-        case 'admin':
-            return view('functions.admin.index');
-            break;
-        case 'werknemer':
-            return view('functions.werknemer.index');
-            break;
-        case 'customer':
-            return view('functions.customer.index');
-            break;
-    }
-})->middleware(['auth'])->name('index');
+
+// General routing
+// Route::get('/', function () {
+//     switch (Auth::user()->function) {
+//         case 'admin':
+//             return view('functions.admin.index');
+//             break;
+//         case 'werknemer':
+//             return view('functions.werknemer.index');
+//             break;
+//         case 'customer':
+//             return view('functions.customer.index');
+//             break;
+//     }
+// })->middleware(['auth'])->name('index');
+Route::resource('/', IndexController::class)->middleware(['auth']);
 
 require __DIR__.'/auth.php';
 
@@ -44,3 +49,7 @@ require __DIR__.'/auth.php';
 Route::resource('/calender', Calender2Controller::class);
 
 Route::post('calender/action', [CalenderController::class, 'action']);
+
+// Admin routes
+Route::resource('admin', AdminPageController::class)->middleware(['auth']);
+
