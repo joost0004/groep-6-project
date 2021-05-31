@@ -12,7 +12,7 @@
         <tbody>
         @foreach($users as $user)
             <tr>
-                <td>{{ $user->name }}</td>
+                <td>{{ $user->voornaam }} {{$user->achternaam}}</td>
                 <td>{{ $user->email }}</td>
                 <td>    <form action="/admin/{{$user->id}}">
                         <button class='button is-link' type="submit">Bekijk</button>
