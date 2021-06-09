@@ -12,7 +12,7 @@
     @csrf
 
     <div class='field'>
-        <label class='label' for='title'>Titel</label>
+        <label class='label' for='title'>Aantal personen</label>
 
         <div class='control'>
         <input
