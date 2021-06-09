@@ -15,12 +15,6 @@ class IndexController extends Controller
             case 'werknemer':
                 return view('functions.werknemer.index');
                 break;
-            case 'customer':
-                return view('functions.customer.index');
-                break;
-            case 'guest':
-                return view('functions.guest.index');
-                break;
         }
     }
 }

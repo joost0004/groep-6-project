@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +30,6 @@ class AdminPageController extends Controller
         } else{
             return redirect('/');
         }
-
     }
 
 
@@ -39,7 +40,7 @@ class AdminPageController extends Controller
      */
     public function create()
     {
-        // return view('registrations.create');
+        return view('auth.register');
     }
 
     /**
@@ -50,29 +51,27 @@ class AdminPageController extends Controller
      */
     public function store(Request $request)
     {
-        // Registration::create($request->validate([
-        //     'voorletters' => 'required',
-        //     'voornaam' => 'required',
-        //     'geslacht' => 'required',
-        //     'adres' => 'required',
-        //     'postcode' => 'required',
-        //     'gemeente' => 'required',
-        //     'regio' => 'required',
-        //     'verwijzer' => 'required'
-        // ]));
+        $request->validate([
+            'function' => 'required|string',
+            'voornaam' => 'required|string|max:20',
+            'achternaam' => 'required|string|max:20',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|confirmed|min:8',
+        ]);
+
+        $user = User::create([
+            'function' => $request->function,
+            'voornaam' => $request->voornaam,
+            'achternaam' => $request->achternaam,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        event(new Registered($user));
+
+//        Auth::login($user);
+
         return redirect('/admin');
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Registration  $registration
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        return view('functions.admin.admin-page.show', ['user' => $user]);
     }
 
     /**
@@ -84,23 +83,6 @@ class AdminPageController extends Controller
     public function edit(User $user)
     {
         return view('functions.admin.admin-page.edit', compact('user'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Registration  $registration
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
-    {
-        // $registration -> update($this->validateRequirement());
-
-        $user->update($request->validate([
-            'voornaam'=>'required'
-        ]));
-        return redirect('/registration/' . $registration->id);
     }
 
     /**
@@ -132,7 +114,5 @@ class AdminPageController extends Controller
                 return false;
                 break;
         }
-
     }
-
 }

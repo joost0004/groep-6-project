@@ -47,7 +47,7 @@
         <div class="field">
             <label class="label" for="adres">Adres</label>
             <div class="control">
-                <input class="input" type="text" name="adres" id="adres" value="{{ $registration->voornaam}}">
+                <input class="input" type="text" name="adres" id="adres" value="{{ $registration->adres}}">
             </div>
         </div>
 
