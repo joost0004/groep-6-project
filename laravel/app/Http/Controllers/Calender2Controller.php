@@ -47,15 +47,10 @@ class Calender2Controller extends Controller
      */
     public function store(Request $request)
     {
-        Registration::create($request->validate([
-            'voorletters' => 'required',
-            'voornaam' => 'required',
-            'geslacht' => 'required',
-            'adres' => 'required',
-            'postcode' => 'required',
-            'gemeente' => 'required',
-            'regio' => 'required',
-            'verwijzer' => 'required'
+        Event::create($request->validate([
+            'title' => 'required',
+            'start' => 'required',
+            'end' => 'required'
         ]));
         return redirect('/calender');
 
@@ -110,20 +105,6 @@ class Calender2Controller extends Controller
     {
         $registration->delete();
         return redirect('/calender');
-    }
-
-    public function validateRequirement(): array
-    {
-        return request()->validate([
-            'voorletters' => 'required',
-            'voornaam' => 'required',
-            'geslacht' => 'required',
-            'adres' => 'required',
-            'postcode' => 'required',
-            'gemeente' => 'required',
-            'regio' => 'required',
-            'vewijzer' => 'required'
-        ]);
     }
 
 }
