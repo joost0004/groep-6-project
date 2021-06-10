@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Middleware;
 use App\Http\Controllers\CalenderController;
 use App\Http\Controllers\AdminPageController;
+use App\Http\Controllers\EmailMessageController;
 
 
 
@@ -51,13 +52,12 @@ Route::resource('/calender', Calender2Controller::class);
 Route::post('calender/action', [CalenderController::class, 'action']);
 
 
-Route::get('/customer', function() {
-    return view('functions/customer/show');
-});
-
 Route::get('/admin', function() {
     return view('functions/admin/show');
 });
+
+route::get('/contact', [EmailMessageController::class, 'show']);
+route::post('/registration/email', [EmailMessageController::class, 'store']);
 
 // Admin routes
 Route::resource('admin', AdminPageController::class)->middleware(['auth']);

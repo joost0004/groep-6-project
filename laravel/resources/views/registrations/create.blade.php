@@ -4,21 +4,10 @@
 
     <div id='wrapper'>
         <div id='page' class='container'>
-            <h1 class='has-text-weight-bold is-size-4'>Nieuwe Registratie</h1>
+            <h1 class='has-text-weight-bold is-size-4'>Klant Aanmaken</h1>
 
             <form method='POST' action="/registration">
                 @csrf
-
-                <div class="mt-4">
-                    <x-label for="name" :value="__('Function')"/>
-
-                    <input type="radio" id="customer" name="function" value="customer" checked>
-                    <label for="customer">Klant</label><br>
-                    <input type="radio" id="werknemer" name="function" value="werknemer">
-                    <label for="werknemer">Werknemer</label><br>
-                    <input type="radio" id="admin" name="function" value="admin">
-                    <label for="admin">Admin</label>
-                </div>
 
                 <div class='field'>
                     <label class='label' for='voornaam'>Voornaam</label>
@@ -157,27 +146,7 @@
                     </div>
                 </div>
 
-                <!-- Password -->
-                <div class="mt-4">
-                    <x-label for="password" :value="__('Password')"/>
-
-                    <x-input id="password" class="block mt-1 w-full"
-                             type="password"
-                             name="password"
-                             required autocomplete="new-password"/>
-                </div>
-
-                <!-- Confirm Password -->
-                <div class="mt-4">
-                    <x-label for="password_confirmation" :value="__('Confirm Password')"/>
-
-                    <x-input id="password_confirmation" class="block mt-1 w-full"
-                             type="password"
-                             name="password_confirmation" required/>
-                </div>
-
-
-                <div classs='field is-grouped'>
+                <div class='field is-grouped'>
                     <div class="control">
                         <button class='button is-link' type='submit'>Submit</button>
                     </div>

@@ -22,7 +22,6 @@ class RegistrationFactory extends Factory
     public function definition()
     {
         return [
-            'voorletters' => $this->faker->lexify('??'),
             'voornaam' => $this->faker->firstName(),
             'geslacht' => $this->faker->randomElement(['Mevr.', 'Dhr.']),
             'adres' => $this->faker->city(),
