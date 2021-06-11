@@ -47,12 +47,20 @@ class Calender2Controller extends Controller
      */
     public function store(Request $request)
     {
-        Event::create($request->validate([
+
+        if ($this->checkForOverlap($request->start) && $this->checkForOverlap($request->end)) {
+            Event::create($request->validate([
             'title' => 'required',
             'start' => 'required',
-            'end' => 'required'
+            'end' => 'required',
+            'ammount' => 'required'
         ]));
         return redirect('/calender');
+        } else {
+            return redirect("https://www.youtu.be");
+        }
+
+
 
     }
 
@@ -105,6 +113,10 @@ class Calender2Controller extends Controller
     {
         $registration->delete();
         return redirect('/calender');
+    }
+
+    public function checkForOverlap($value) {
+        return Event::where('start', '<=', $value)->where('end', '>=', $value)->count() == 0;
     }
 
 }

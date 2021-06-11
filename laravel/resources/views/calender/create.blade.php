@@ -70,8 +70,32 @@
     @enderror
    </div>
 
+   <div class='field'>
+    <label class='label' for='ammount'>Aantal personen</label>
 
+    <div class='control'>
+    <input
+    class='input @error('ammount') is-danger @enderror'
+    type='text'
+    name='ammount'
+    id='ammount'
+    value='{{old('ammount')}}'>
 
+    @error('ammount')
+        <p class="help is-danger">{{$errors->first('ammount')}}</p>
+    @enderror
+</div>
+</div>
+
+   {{-- <div class="select">
+       <select>
+           <option id="1" name="ammount" value="1">1</option>
+           <option id="2" name="ammount" value="2">2</option>
+           <option id="3" name="ammount" value="3">3</option>
+           <option id="4" name="ammount" value="4">4</option>
+           <option id="5" name="ammount" value="5">5</option>
+       </select>
+    </div> --}}
 
     <div classs='field is-grouped'>
         <div class="control">
@@ -90,14 +114,33 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-<script>
+{{-- <script>
 $("#datetimepicker").datetimepicker({
-format: 'YYYY-MM-DD HH:mm:ss'
+format: 'YYYY-MM-DD HH:mm'
 });
 $("#datetimepicker2").datetimepicker({
-format: 'YYYY-MM-DD HH:mm:ss'
+format: 'YYYY-MM-DD HH:mm'
 });
-</script>
+</script> --}}
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm',
+            sideBySide: true,
+        });
+        $('#datetimepicker2').datetimepicker({
+    useCurrent: false, //Important! See issue #1075
+    format: 'YYYY-MM-DD HH:mm',
+    sideBySide: true,
+    });
+        $("#datetimepicker").on("dp.change", function (e) {
+            $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker2").on("dp.change", function (e) {
+            $('#datetimepicker').data("DateTimePicker").maxDate(e.date);
+        });
+    });
+ </script>
 
 @endsection
 
