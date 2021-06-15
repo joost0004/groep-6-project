@@ -13,7 +13,7 @@ class RegistrationController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -82,16 +82,7 @@ class RegistrationController extends Controller
      */
     public function update(Request $request, Registration $registration)
     {
-        $registration->update($request->validate([
-            'voornaam' => 'required|string|max:20',
-            'achternaam' => 'required|string|max:20',
-            'geslacht' => 'required|string|max:10',
-            'postcode' => 'required|string|max:6',
-            'adres' => 'required|string|max:50',
-            'stad' => 'required|string|max:20',
-            'verwijzer' => 'required|string|max:40',
-            'email' => 'required|string|email|max:255',
-        ]));
+        $registration->update($this->validate($request));
         return redirect('/registration/' . $registration->id);
     }
 
@@ -105,6 +96,24 @@ class RegistrationController extends Controller
     {
         $registration->delete();
         return redirect('/registration');
+    }
+
+    /**
+     * @param Request $request
+     * @return array
+     */
+    private function validate(Request $request): array
+    {
+        return $request->validate([
+            'voornaam' => 'required|string|max:20',
+            'achternaam' => 'required|string|max:20',
+            'geslacht' => 'required|string|max:10',
+            'postcode' => 'required|string|max:6',
+            'adres' => 'required|string|max:50',
+            'stad' => 'required|string|max:20',
+            'verwijzer' => 'required|string|max:40',
+            'email' => 'required|string|email|max:255',
+        ]);
     }
 
 }
