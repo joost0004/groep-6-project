@@ -36,7 +36,7 @@ class RegisteredUserController extends Controller
             'voornaam' => 'required|string|max:20',
             'achternaam' => 'required|string|max:20',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|confirmed|min:8',
+            'password' => 'required|string|min:8|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/|required_with:password_confirmation|same:password_confirmation',
         ]);
 
         $user = User::create([

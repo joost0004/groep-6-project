@@ -53,6 +53,9 @@
                          required autocomplete="new-password"/>
             </div>
 
+            <p style="color: grey;">Uw wachtwoord moet minimaal 8 karakters lang zijn en een hoofdletter, kleine letter en cijfer bevatten.</p>
+            <br>
+            <p style="color: grey;">Tip: Gebruik een wachtwoordmanager. Dan staan al uw wachtwoorden veilig in een digitale kluis en hoeft u maar 1 wachtwoord te onthouden.</p>
             <!-- Confirm Password -->
             <div class="mt-4">
                 <x-label for="password_confirmation" :value="__('Confirm Password')"/>

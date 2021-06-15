@@ -42,7 +42,7 @@ Route::resource('/registration', RegistrationController::class);
 //             break;
 //     }
 // })->middleware(['auth'])->name('index');
-Route::resource('/', IndexController::class)->middleware(['verified']);
+Route::resource('/', IndexController::class)->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
 
