@@ -6,13 +6,13 @@
 
 <div id='wrapper'>
     <div id='page' class='container'>
-        <h1 class='has-text-weight-bold is-size-4'>Nieuwe Afspraak</h1>
+        <h1 class='has-text-weight-bold is-size-8'>Nieuwe Afspraak</h1>
 
 <form method='POST' action="/calender">
     @csrf
 
     <div class='field'>
-        <label class='label' for='title'>Aantal personen</label>
+        <a class='has-text-weight-bold is-size-4' for='title'>Aantal personen</a>
 
         <div class='control'>
         <input
@@ -21,7 +21,6 @@
         name='title'
         id='title'
         value='{{old('title')}}'>
-
         @error('title')
             <p class="help is-danger">{{$errors->first('title')}}</p>
         @enderror
@@ -29,19 +28,20 @@
     </div>
 
     <div class="field">
-        <label class='label' for='start'>Start Date</label>
+        <a class='has-text-weight-bold is-size-4' for='start'>Start Date</a>
 
          <div class="control">
-             <div class='input-group date @error('start') is-danger @enderror' id='datetimepicker'>
+             <div class='input-group date @error('start') is-danger @enderror'>
              <input
              type='text'
              class="form-control"
              name="start"
+             id='datetimepicker'
              id="start"
              value="{{old('start')}}">
              <span class="input-group-addon">
-               <span class="glyphicon glyphicon-calendar"></span>
-             </span>
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
              </div>
          </div>
          @error('start')
@@ -49,55 +49,24 @@
          @enderror
     </div>
 
-    <div class="field">
-        <label class='label' for='title'>End Date</label>
-
-        <div class="control">
-            <div class='input-group date @error('end') is-danger @enderror' id='datetimepicker2'>
-            <input
-            type='text'
-            class="form-control"
-            name="end"
-            id="end"
-            value="{{old('end')}}">
-            <span class="input-group-addon">
-              <span class="glyphicon glyphicon-calendar"></span>
-            </span>
-            </div>
-        </div>
-        @error('end')
-        <p class="help is-danger">{{$errors->first('end')}}</p>
-    @enderror
-   </div>
-
    <div class='field'>
-    <label class='label' for='ammount'>Aantal personen</label>
-
-    <div class='control'>
-    <input
-    class='input @error('ammount') is-danger @enderror'
-    type='text'
-    name='ammount'
-    id='ammount'
-    value='{{old('ammount')}}'>
-
-    @error('ammount')
-        <p class="help is-danger">{{$errors->first('ammount')}}</p>
-    @enderror
-</div>
+    <a class='has-text-weight-bold is-size-4' for='ammount'>Aantal personen</a>
 </div>
 
-   {{-- <div class="select">
-       <select>
-           <option id="1" name="ammount" value="1">1</option>
-           <option id="2" name="ammount" value="2">2</option>
-           <option id="3" name="ammount" value="3">3</option>
-           <option id="4" name="ammount" value="4">4</option>
-           <option id="5" name="ammount" value="5">5</option>
+   <div class="select">
+       <select class="form-control @error('ammount') is-danger @enderror" id="ammount" name="ammount">
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+           <option value="4">4</option>
+           <option value="5">5</option>
        </select>
-    </div> --}}
+       @error('ammount')
+       <p class="help is-danger">{{$errors->first('ammount')}}</p>
+   @enderror
+    </div>
 
-    <div classs='field is-grouped'>
+    <div classs='field is-grouped' style="margin-top: 1.5rem;">
         <div class="control">
             <button class='button is-link' type='submit'>Submit</button>
         </div>
@@ -127,17 +96,11 @@ format: 'YYYY-MM-DD HH:mm'
         $('#datetimepicker').datetimepicker({
             format: 'YYYY-MM-DD HH:mm',
             sideBySide: true,
+            daysOfWeekDisabled: [0,4,5,6],
+            disabledHours: [0,1,2,3,4,5,6,7,8,17,18,19,20,21,22,23,24]
         });
-        $('#datetimepicker2').datetimepicker({
-    useCurrent: false, //Important! See issue #1075
-    format: 'YYYY-MM-DD HH:mm',
-    sideBySide: true,
-    });
         $("#datetimepicker").on("dp.change", function (e) {
             $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
-        });
-        $("#datetimepicker2").on("dp.change", function (e) {
-            $('#datetimepicker').data("DateTimePicker").maxDate(e.date);
         });
     });
  </script>
