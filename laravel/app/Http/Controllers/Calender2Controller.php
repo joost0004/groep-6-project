@@ -65,12 +65,12 @@ class Calender2Controller extends Controller
                 $event->ammount = $data['ammount'];
                 $event->end = $end;
                 $event->save();
-                return redirect('/calender/create');
+                return redirect('/calender');
             } else {
                 return redirect("/calender/create");
             }
         } else {
-            return redirect("https://www.youtu.be");
+            return redirect("/calender/create");
         }
     }
 

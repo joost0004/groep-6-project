@@ -12,7 +12,7 @@
     @csrf
 
     <div class='field'>
-        <a class='has-text-weight-bold is-size-4' for='title'>Aantal personen</a>
+        <a class='has-text-weight-bold is-size-4' for='title'>Titel Afspraak</a>
 
         <div class='control'>
         <input
