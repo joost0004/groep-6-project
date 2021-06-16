@@ -7,6 +7,15 @@
         @csrf
         @method('PUT')
 
+        <div class="mt-4">
+            <input type="radio" id="customer" name="function" value="customer">
+            <label for="customer">Klant</label><br>
+            <input type="radio" id="werknemer" name="function" value="werknemer">
+            <label for="werknemer">Werknemer</label><br>
+            <input type="radio" id="admin" name="function" value="admin">
+            <label for="admin">Admin</label>
+        </div>
+
         <div class="field">
             <label class="label" for="voornaam">Voornaam</label>
             <div class="control">
