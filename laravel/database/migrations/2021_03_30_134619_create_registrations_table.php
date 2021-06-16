@@ -15,19 +15,14 @@ class CreateRegistrationsTable extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
-            $table->string('voorletters');
             $table->string('voornaam');
+            $table->string('achternaam');
             $table->string('geslacht');
-            $table->string('adres');
             $table->string('postcode');
-            $table->string('gemeente');
-            $table->string('regio');
-            $table->string('verwijzer');
-            $table->boolean('partner')->default(false)->nullable();
-            $table->decimal('kind')->nullable();
-            $table->boolean('linnen')->nullable();
-            $table->boolean('speelgoed')->nullable();
-            $table->boolean('volwassen')->nullable();
+            $table->string('adres');
+            $table->string('stad');
+            $table->string('verwijzer')->nullable();
+            $table->string('email')->unique();
             $table->timestamps();
         });
     }

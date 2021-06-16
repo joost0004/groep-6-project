@@ -1,9 +1,17 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Calender2Controller;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\RegistrationController;
+use Illuminate\Support\Facades\Auth;
+use GuzzleHttp\Middleware;
+use App\Http\Controllers\CalenderController;
+use App\Http\Controllers\AdminPageController;
+use App\Http\Controllers\EmailMessageController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +24,35 @@ use App\Http\Controllers\RegistrationController;
 |
 */
 
-Route::get('/', [IndexController::class, 'show']);
-Route::resource('/registration', RegistrationController::class);
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
+
+// General routing
+
+Route::resource('/', IndexController::class)->middleware(['auth',
+ //                                                         'verified'
+                                                         ]);
+
+
+require __DIR__.'/auth.php';
+
+// CRUD Routing
+Route::resource('/registration', RegistrationController::class)->middleware(['auth']);
+Route::resource('/calender', Calender2Controller::class)->middleware(['auth']);
+Route::post('calender/action', [CalenderController::class, 'action'])->middleware(['auth']);
+
+
+
+// Testing routes
+Route::get('/customer', function() {
+    return view('functions/customer/show');
+})->middleware(['auth']);
+Route::get('/admin', function() {
+    return view('functions/admin/show');
+})->middleware(['auth']);
+
+route::get('/contact', [EmailMessageController::class, 'show']);
+route::post('/registration/email', [EmailMessageController::class, 'store']);
+
+// Admin routes
+Route::resource('admin', AdminPageController::class)->middleware(['auth']);

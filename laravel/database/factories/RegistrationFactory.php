@@ -22,15 +22,17 @@ class RegistrationFactory extends Factory
     public function definition()
     {
         return [
-            'voorletters' => $this->faker->word(),
             'voornaam' => $this->faker->firstName(),
-            'geslacht' => $this->faker->title(),
+            'geslacht' => $this->faker->randomElement(['Mevr.', 'Dhr.']),
             'adres' => $this->faker->city(),
-            'postcode' => $this->faker->postcode(),
-            'gemeente' => $this->faker->state(),
-            'regio' => $this->faker->country(),
-            'verwijzer' => $this->faker->name(),
-            'volwassen' => true
+            'postcode' => $this->faker->bothify('#### ??'),
+            'gemeente' => $this->faker->randomElement(['Borsele', 'Goes', 'Hulst', 'Kapelle', 'Middelburg', 'Noord-Beveland', 'Reimerswaald', 'Schouwen-Duiveland', 'Sluis', 'Terneuzen', 'Tholen', 'Veere', 'Vlissingen']),
+            'regio' => $this->faker->randomElement(['Tholen', 'Sint Philipsland', 'Schouwen-Duiveland', 'Noord-Beveland', 'Zuid-Beveland', 'Walcheren', 'Zeeuws-Vlaanderen']),
+            'verwijzer' => $this->faker->randomElement(['Emergis', 'Vluchtelingen werk', 'Zorgstroom', 'Voedselbank', 'MWW', 'Aan-Z', 'Juvent', 'Huisarts', 'Leger des Heils', 'Kledingbank', 'FinaSol', 'Diaconie', 'Vispoort']),
+            'volwassen' => $this->faker->boolean,
+            'kind' => $this->faker->numberBetween(0, 3),
+            'linnen' => $this->faker->boolean,
+            'speelgoed' => $this->faker->boolean,
         ];
     }
 }

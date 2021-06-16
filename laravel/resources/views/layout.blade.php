@@ -8,11 +8,14 @@
 
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-              <a class="navbar-item" href="https://www.kledingbank-zeeland.nl/">
+              <a class="navbar-item" href="/">
                 <img src="/img/logo.png">
               </a>
+            </div>
 
-              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+
+            <div class="navbar-end">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -21,34 +24,39 @@
 
                 <div class="navbar-item has-dropdown is-hoverable">
                   <a class="navbar-link">
-                    Navigatie
+                    <div>{{ Auth::user()->voornaam }} {{ Auth::user()->achternaam }}</div>
                   </a>
 
                   <div class="navbar-dropdown">
-                    <a class="navbar-item" href="/">
-                      Home
-                    </a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item">
-                      Registratie
-                    </a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-dropdown-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                            {{ __('Log uit') }}
+                        </x-dropdown-link>
+                    </form>
                   </div>
+                </div>
                 </div>
               </div>
             </div>
 
-    <div class="navbar-end">
+
+    {{-- <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary">
+            <a class="button is-primary" href="/register">
               <strong>Sign up</strong>
             </a>
-            <a class="button is-light">
+            <a class="button is-light" href="/login">
               Log in
             </a>
           </div>
         </div>
-      </div>
+      </div> --}}
+
             </div>
           </nav>
         </header>
