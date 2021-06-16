@@ -2,30 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Auth\Events\Registered;
+use App\Models\Registration;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+
 
 class RegistrationController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
-        $registrationscustomer = DB::table('users')->where('function', 'customer')->get();
-
-        return view('registrations.index', ['registrationscustomer' => $registrationscustomer]);
+        return view('registrations.index', ['registrations' => Registration::all()]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -36,12 +32,12 @@ class RegistrationController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'function' => 'nullable|string',
+        Registration::create($request->validate([
+
             'voornaam' => 'required|string|max:20',
             'achternaam' => 'required|string|max:20',
             'geslacht' => 'required|string|max:10',
@@ -50,24 +46,7 @@ class RegistrationController extends Controller
             'stad' => 'required|string|max:20',
             'verwijzer' => 'required|string|max:40',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|confirmed|min:8',
-        ]);
-
-        $user = User::create([
-            'function' => $request->function,
-            'voornaam' => $request->voornaam,
-            'achternaam' => $request->achternaam,
-            'geslacht' => $request->geslacht,
-            'postcode' => $request->postcode,
-            'adres' => $request->adres,
-            'stad' => $request->stad,
-            'verwijzer' => $request->verwijzer,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        event(new Registered($user));
-
+        ]));
         return redirect('/registration');
     }
 
@@ -75,9 +54,9 @@ class RegistrationController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Registration  $registration
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function show(User $registration)
+    public function show(Registration $registration)
     {
         return view('registrations.show', ['registration' => $registration]);
     }
@@ -86,9 +65,9 @@ class RegistrationController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Registration  $registration
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit(User $registration)
+    public function edit(Registration $registration)
     {
         return view('registrations.edit', compact('registration'));
     }
@@ -98,12 +77,11 @@ class RegistrationController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Registration  $registration
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Routing\Redirector
      */
-    public function update(Request $request, User $registration)
+    public function update(Request $request, Registration $registration)
     {
         $registration->update($request->validate([
-            'function' => 'required|string',
             'voornaam' => 'required|string|max:20',
             'achternaam' => 'required|string|max:20',
             'geslacht' => 'required|string|max:10',
@@ -120,9 +98,9 @@ class RegistrationController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Registration  $registration
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Routing\Redirector
      */
-    public function destroy(User $registration)
+    public function destroy(Registration $registration)
     {
         $registration->delete();
         return redirect('/registration');

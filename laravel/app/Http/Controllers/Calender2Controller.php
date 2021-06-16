@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
-use App\Models\Registration;
 use DateInterval;
 use DateTime;
 use Illuminate\Http\Request;
@@ -74,16 +73,20 @@ class Calender2Controller extends Controller
         }
     }
 
-   /**
-    * Display the specified resource.
-    *
-    * @param  \App\Models\Event  $event
-    * @return \Illuminate\Http\Response
-    */
-   public function show(Event $event)
-   {
 
-   }
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Event  $event
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Event $event)
+    {
+
+        return view('calender.show', [
+            'event' => $event
+        ]);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -91,6 +94,7 @@ class Calender2Controller extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
+
     public function edit(Event $event)
     {
 
@@ -103,6 +107,7 @@ class Calender2Controller extends Controller
      * @param  \App\Models\Event $event
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, Event $event)
     {
 
@@ -114,9 +119,9 @@ class Calender2Controller extends Controller
      * @param  \App\Models\Registration  $registration
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Registration $registration)
+    public function destroy(Event $event)
     {
-        $registration->delete();
+        $event->delete();
         return redirect('/calender');
     }
 

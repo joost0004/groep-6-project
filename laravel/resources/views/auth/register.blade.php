@@ -11,7 +11,7 @@
 
         <form method="POST" action="{{ route('register') }}">
         @csrf
-
+        
             <!-- Voornaam -->
             <div>
                 <x-label for="voornaam" :value="__('Voornaam')"/>
@@ -27,6 +27,7 @@
                 <x-input id="achternaam" class="block mt-1 w-full" type="text" name="achternaam" :value="old('achternaam')" required
                          autofocus/>
             </div>
+
 
         <!-- Geslacht -->
         <div class="mt-4">
