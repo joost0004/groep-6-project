@@ -11,15 +11,7 @@
 
         <form method="POST" action="{{ route('register') }}">
         @csrf
-
-        <!-- Function -->
-            <div class="mt-4">
-                <x-label for="name" :value="__('Function')"/>
-
-                <input type="radio" id="werknemer" name="function" value="werknemer" checked>
-                <label for="guest">Werknemer</label><br>
-            </div>
-
+        
             <!-- Voornaam -->
             <div>
                 <x-label for="voornaam" :value="__('Voornaam')"/>
@@ -35,6 +27,53 @@
                 <x-input id="achternaam" class="block mt-1 w-full" type="text" name="achternaam" :value="old('achternaam')" required
                          autofocus/>
             </div>
+
+
+        <!-- Geslacht -->
+        <div class="mt-4">
+            <x-label for="name" :value="__('Geslacht')"/>
+
+            <input type="radio" id="male" name="geslacht" value="male">
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="geslacht" value="female">
+            <label for="female">Female</label><br>
+{{--                <input type="radio" id="werknemer" name="function" value="werknemer">--}}
+{{--                <label for="werknemer">Werknemer</label><br>--}}
+{{--                <input type="radio" id="admin" name="function" value="admin">--}}
+{{--                <label for="admin">Admin</label>--}}
+        </div>
+
+            <!-- Postcode -->
+            <div>
+                <x-label for="postcode" :value="__('Postcode')"/>
+
+                <x-input id="postcode" class="block mt-1 w-full" type="text" name="postcode" :value="old('postcode')" required
+                         autofocus/>
+            </div>
+
+            <!-- Adres -->
+            <div>
+                <x-label for="adres" :value="__('Adres')"/>
+
+                <x-input id="adres" class="block mt-1 w-full" type="text" name="adres" :value="old('adres')" required
+                         autofocus/>
+            </div>
+
+            <!-- Stad -->
+            <div>
+                <x-label for="stad" :value="__('Stad')"/>
+
+                <x-input id="stad" class="block mt-1 w-full" type="text" name="stad" :value="old('stad')" required
+                         autofocus/>
+            </div>
+
+            <!-- Verwijzer -->
+{{--            <div>--}}
+{{--                <x-label for="verwijzer" :value="__('Verwijzer')"/>--}}
+
+{{--                <x-input id="verwijzer" class="block mt-1 w-full" type="text" name="verwijzer" :value="old('verwijzer')" required--}}
+{{--                         autofocus/>--}}
+{{--            </div>--}}
 
             <!-- Email Address -->
             <div class="mt-4">

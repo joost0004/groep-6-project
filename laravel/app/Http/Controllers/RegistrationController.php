@@ -37,6 +37,7 @@ class RegistrationController extends Controller
     public function store(Request $request)
     {
         Registration::create($request->validate([
+
             'voornaam' => 'required|string|max:20',
             'achternaam' => 'required|string|max:20',
             'geslacht' => 'required|string|max:10',
