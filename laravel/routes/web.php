@@ -28,7 +28,11 @@ use App\Http\Controllers\EmailMessageController;
 
 
 // General routing
-Route::resource('/', IndexController::class)->middleware(['auth']);
+
+Route::resource('/', IndexController::class)->middleware(['auth', 
+ //                                                         'verified'
+                                                         ]);
+=======
 
 require __DIR__.'/auth.php';
 
