@@ -18,17 +18,15 @@
         </thead>
         <tbody>
         <tr>
-            <td>{{ $calender->title }}</td>
-            <td>{{ $calender->persons }}</td>
-            <td>{{ $calender->start }}</td>
-            <td>{{ $calender->end}}</td>
+            <td>{{ $event->title }}</td>
+            <td>{{ $event->persons }}</td>
+            <td>{{ $event->start }}</td>
+            <td>{{ $event->end}}</td>
 
         </tr>
         </tbody>
     </table>
-    <form action="/calender{{$calender->id}}/edit">
         <button type="submit" class='button is-link'>Afspraak annuleren</button>
         <button type="submit" class='button is-link'>Afspraak wijzigen</button>
-    </form>
 
 @endsection

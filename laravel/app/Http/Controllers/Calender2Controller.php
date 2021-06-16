@@ -46,17 +46,17 @@ class Calender2Controller extends Controller
      */
     public function store(Request $request)
     {
-        Registration::create($request->validate([
-            'voorletters' => 'required',
-            'voornaam' => 'required',
-            'geslacht' => 'required',
-            'adres' => 'required',
-            'postcode' => 'required',
-            'gemeente' => 'required',
-            'regio' => 'required',
-            'verwijzer' => 'required'
-        ]));
-        return redirect('/calender');
+        // Registration::create($request->validate([
+        //     'voorletters' => 'required',
+        //     'voornaam' => 'required',
+        //     'geslacht' => 'required',
+        //     'adres' => 'required',
+        //     'postcode' => 'required',
+        //     'gemeente' => 'required',
+        //     'regio' => 'required',
+        //     'verwijzer' => 'required'
+        // ]));
+        // return redirect('/calender');
 
     }
 
@@ -68,7 +68,10 @@ class Calender2Controller extends Controller
      */
     public function show(Event $event)
     {
-        return view('calender.show', ['calender' => $event]);
+
+        return view('calender.show', [
+            'event' => $event
+        ]);
     }
 
     /**
@@ -77,7 +80,7 @@ class Calender2Controller extends Controller
      * @param  \App\Models\Registration  $registration
      * @return \Illuminate\Http\Response
      */
-    public function edit(Registration $registration)
+    public function edit()
     {
         return view('calender.create', compact('registration'));
     }
@@ -89,7 +92,7 @@ class Calender2Controller extends Controller
      * @param  \App\Models\Registration  $registration
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Registration $registration)
+    public function update(Request $request, Event $registration)
     {
         // $registration -> update($this->validateRequirement());
 
@@ -105,9 +108,9 @@ class Calender2Controller extends Controller
      * @param  \App\Models\Registration  $registration
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Registration $registration)
+    public function destroy(Event $event)
     {
-        $registration->delete();
+        $event->delete();
         return redirect('/calender');
     }
 
