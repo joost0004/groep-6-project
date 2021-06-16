@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
-use App\Models\Registration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -61,16 +60,16 @@ class Calender2Controller extends Controller
 
     }
 
-//    /**
-//     * Display the specified resource.
-//     *
-//     * @param  \App\Models\Registration  $registration
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function show(Registration $registration)
-//    {
-//        return view('registrations.show', ['registration' => $registration]);
-//    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Event  $event
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Event $event)
+    {
+        return view('calender.show', ['calender' => $event]);
+    }
 
     /**
      * Show the form for editing the specified resource.
