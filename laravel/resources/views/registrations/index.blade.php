@@ -5,26 +5,27 @@
     <form action="/">
         <button type="submit" class='button is-link'>Ga terug</button>
     </form>
+    <form action="/registration/create">
+        <button type="submit" class='button is-link'>Klant aanmaken</button>
+    </form>
 
     <table class="table">
         <thead>
         <tr>
-            <td>Functie</td>
             <td>Voornaam</td>
             <td>Achternaam</td>
             <td>Geslacht</td>
-            <td>Verwijzer</td>
+            <td>E-mail</td>
             <td></td>
         </tr>
         </thead>
         <tbody>
-        @foreach($registrationscustomer as $registration)
+        @foreach($registrations as $registration)
             <tr>
-                <td>{{ $registration->function }}</td>
                 <td>{{ $registration->voornaam }}</td>
                 <td>{{ $registration->achternaam }}</td>
                 <td>{{ $registration->geslacht }}</td>
-                <td>{{ $registration->verwijzer }}</td>
+                <td>{{ $registration->email }}</td>
                 <td>    <form action="/registration/{{$registration->id}}">
                         <button class='button is-link' type="submit">Bekijk</button>
                     </form>

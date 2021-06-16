@@ -35,10 +35,6 @@ class RegisteredUserController extends Controller
         $request->validate([
             'voornaam' => 'required|string|max:20',
             'achternaam' => 'required|string|max:20',
-            'geslacht' => 'required|string|max:10',
-            'postcode' => 'required|string|max:6',
-            'adres' => 'required|string|max:50',
-            'stad' => 'required|string|max:20',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
         ]);
@@ -46,11 +42,6 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'voornaam' => $request->voornaam,
             'achternaam' => $request->achternaam,
-            'geslacht' => $request->geslacht,
-            'postcode' => $request->postcode,
-            'adres' => $request->adres,
-            'stad' => $request->stad,
-            'verwijzer' => $request->verwijzer,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);

@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Registration extends Model
 {
     use HasFactory;
-  
+
     protected $fillable = [
-        'voorletters', 'voornaam', 'geslacht', 'adres', 'postcode', 'gemeente', 'regio', 'verwijzer', 'partner', 'kind', 'linnen', 'speelgoed', 'volwassen'
+        'voornaam', 'achternaam', 'geslacht', 'postcode', 'adres', 'stad', 'verwijzer', 'email'
     ];
 
     public function path()
