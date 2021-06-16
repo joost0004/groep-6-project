@@ -24,38 +24,28 @@ use App\Http\Controllers\EmailMessageController;
 |
 */
 
-// Route::get('/', [IndexController::class, 'show']);
-Route::resource('/registration', RegistrationController::class);
+
 
 
 // General routing
-// Route::get('/', function () {
-//     switch (Auth::user()->function) {
-//         case 'admin':
-//             return view('functions.admin.index');
-//             break;
-//         case 'werknemer':
-//             return view('functions.werknemer.index');
-//             break;
-//         case 'customer':
-//             return view('functions.customer.index');
-//             break;
-//     }
-// })->middleware(['auth'])->name('index');
 Route::resource('/', IndexController::class)->middleware(['auth']);
-
 
 require __DIR__.'/auth.php';
 
-//Route::get('calender', [CalenderController::class, 'index'])->middleware(['auth'])->name('index');
-Route::resource('/calender', Calender2Controller::class);
+// CRUD Routing
+Route::resource('/registration', RegistrationController::class)->middleware(['auth']);
+Route::resource('/calender', Calender2Controller::class)->middleware(['auth']);
+Route::post('calender/action', [CalenderController::class, 'action'])->middleware(['auth']);
 
-Route::post('calender/action', [CalenderController::class, 'action']);
 
 
+// Testing routes
+Route::get('/customer', function() {
+    return view('functions/customer/show');
+})->middleware(['auth']);
 Route::get('/admin', function() {
     return view('functions/admin/show');
-});
+})->middleware(['auth']);
 
 route::get('/contact', [EmailMessageController::class, 'show']);
 route::post('/registration/email', [EmailMessageController::class, 'store']);

@@ -11,33 +11,6 @@
               <a class="navbar-item" href="/">
                 <img src="/img/logo.png">
               </a>
-
-              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-              </a>
-            </div>
-
-                <div class="navbar-item has-dropdown is-hoverable">
-                  <a class="navbar-link">
-                    Navigatie
-                  </a>
-
-                  <div class="navbar-dropdown">
-                    <a class="navbar-item" href="/">
-                      Home
-
-                    </a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item" href="/registration">
-                      Registratie
-
-
-                    </a>
-                  </div>
-                </div>
-              </div>
             </div>
 
 
