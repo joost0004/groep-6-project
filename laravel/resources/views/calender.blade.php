@@ -19,11 +19,15 @@
     <section class="section">
     <nav class="level">
         <p class="level-item has-text-centered">
+            <button class="button" onclick='location.href="/"'>Terug</button>
+        </p>
+        <p class="level-item has-text-centered">
             <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
         </p>
         <p class="level-item has-text-centered">
-            <button class="button" onclick='location.href="/calender/create"'>+</button>
+            <button class="button" onclick='location.href="/calender/create"'>Afspraak maken</button>
           </p>
+
       </nav>
       <section class="section">
 

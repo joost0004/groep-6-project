@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
-use App\Models\Registration;
+use DateInterval;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +15,7 @@ class Calender2Controller extends Controller
 
 
     /**
-     * Display a listing of the resource.
+     * Display the calender with all exising events. Code taken from fullcalendar source code.
      *
      * @return \Illuminate\Http\Response
      */
@@ -40,64 +41,76 @@ class Calender2Controller extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Check for any overlap with existing events.
+     * If time is availaible, new event is created and stored.
+     * Any other case, error is returned.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        Registration::create($request->validate([
-            'voorletters' => 'required',
-            'voornaam' => 'required',
-            'geslacht' => 'required',
-            'adres' => 'required',
-            'postcode' => 'required',
-            'gemeente' => 'required',
-            'regio' => 'required',
-            'verwijzer' => 'required'
-        ]));
-        return redirect('/calender');
-
+        if ($this->checkForOverlap($request->start)) {
+            $end = $this->determineEndTime($request->ammount, $request->start);
+            if ($this->checkForOverlap($end)) {
+                $data = $request->validate([
+                    'title' => 'required',
+                    'start' => 'required',
+                    'ammount' => 'required'
+                ]);
+                $event = new Event();
+                $event->title = $data['title'];
+                $event->start = $data['start'];
+                $event->ammount = $data['ammount'];
+                $event->end = $end;
+                $event->save();
+                return redirect('/calender');
+            } else {
+                return redirect("/calender/create");
+            }
+        } else {
+            return redirect("/calender/create");
+        }
     }
 
-//    /**
-//     * Display the specified resource.
-//     *
-//     * @param  \App\Models\Registration  $registration
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function show(Registration $registration)
-//    {
-//        return view('registrations.show', ['registration' => $registration]);
-//    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Event  $event
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Event $event)
+    {
+
+        return view('calender.show', [
+            'event' => $event
+        ]);
+    }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Registration  $registration
+     * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit(Registration $registration)
+
+    public function edit(Event $event)
     {
-        return view('calender.create', compact('registration'));
+
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Registration  $registration
+     * @param  \App\Models\Event $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Registration $registration)
-    {
-        // $registration -> update($this->validateRequirement());
 
-        $registration->update($request->validate([
-            'voornaam'=>'required'
-        ]));
-        return redirect('/calender/' . $registration->id);
+    public function update(Request $request, Event $event)
+    {
+
     }
 
     /**
@@ -106,24 +119,23 @@ class Calender2Controller extends Controller
      * @param  \App\Models\Registration  $registration
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Registration $registration)
+    public function destroy(Event $event)
     {
-        $registration->delete();
+        $event->delete();
         return redirect('/calender');
     }
 
-    public function validateRequirement(): array
-    {
-        return request()->validate([
-            'voorletters' => 'required',
-            'voornaam' => 'required',
-            'geslacht' => 'required',
-            'adres' => 'required',
-            'postcode' => 'required',
-            'gemeente' => 'required',
-            'regio' => 'required',
-            'vewijzer' => 'required'
-        ]);
+    // Function checks for any overlap in start or end value of existing events in the database.
+    public function checkForOverlap($value) {
+        return Event::where('start', '<=', $value)->where('end', '>=', $value)->count() == 0;
+    }
+
+    // An hour is added to the start time for every person. New variable is returned.
+    public function determineEndTime($ammount, $start) {
+        $hourString = 'PT'.$ammount.'H';
+        $date = new DateTime($start);
+        $date->add(new DateInterval($hourString));
+        return $date;
     }
 
 }
