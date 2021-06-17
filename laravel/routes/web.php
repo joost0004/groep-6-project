@@ -52,7 +52,9 @@ Route::get('/admin', function() {
 })->middleware(['auth']);
 
 route::get('/contact', [EmailMessageController::class, 'show']);
-route::post('/registration/email', [EmailMessageController::class, 'store']);
+route::post('/registration/{registration}/email', [EmailMessageController::class, 'store']);
 
 // Admin routes
 Route::resource('admin', AdminPageController::class)->middleware(['auth']);
+
+
