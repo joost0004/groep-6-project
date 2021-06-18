@@ -2,16 +2,18 @@
 
 @section ('content')
 
-    <form action="/calender">
+    <form action="/events">
         <button type="submit" class='button is-link'>Ga terug</button>
     </form>
+
+
 
     <table class="table">
         <thead>
         <tr>
             <td>Title</td>
-            <td>Persons</td>
-            <td>Start datum en tijd</td>
+            <td>Personen</td>
+            <td>Begin datum en tijd</td>
             <td>Eind datum en tijd</td>
 
         </tr>
@@ -19,7 +21,7 @@
         <tbody>
         <tr>
             <td>{{ $event->title }}</td>
-            <td>{{ $event->persons }}</td>
+            <td>{{ $event->ammount }}</td>
             <td>{{ $event->start }}</td>
             <td>{{ $event->end}}</td>
 

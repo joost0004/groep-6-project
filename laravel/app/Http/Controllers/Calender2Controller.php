@@ -50,8 +50,10 @@ class Calender2Controller extends Controller
      */
     public function store(Request $request)
     {
+
         if ($this->checkForOverlap($request->start)) {
             $end = $this->determineEndTime($request->ammount, $request->start);
+
             if ($this->checkForOverlap($end)) {
                 $data = $request->validate([
                     'title' => 'required',
@@ -64,12 +66,12 @@ class Calender2Controller extends Controller
                 $event->ammount = $data['ammount'];
                 $event->end = $end;
                 $event->save();
-                return redirect('/calender');
+                return redirect('/events');
             } else {
-                return redirect("/calender/create");
+                return redirect("/events/create");
             }
         } else {
-            return redirect("/calender/create");
+            return redirect("/events/create");
         }
     }
 
@@ -83,9 +85,8 @@ class Calender2Controller extends Controller
     public function show(Event $event)
     {
 
-        return view('calender.show', [
-            'event' => $event
-        ]);
+
+        return view('calender.show', ['event' => $event]);
     }
 
     /**

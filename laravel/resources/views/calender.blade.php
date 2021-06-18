@@ -25,7 +25,7 @@
             <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
         </p>
         <p class="level-item has-text-centered">
-            <button class="button" onclick='location.href="/calender/create"'>Afspraak maken</button>
+            <button class="button" onclick='location.href="/events/create"'>Afspraak maken</button>
           </p>
 
       </nav>
@@ -55,7 +55,7 @@
                 center:'title',
                 right:'month,agendaWeek,agendaDay'
             },
-            events:'/calender',
+            events:'/events',
             selectable:true,
             selectHelper: true,
             select:function(start, end, allDay)
@@ -69,7 +69,7 @@
                     var end = $.fullCalendar.formatDate(end, 'Y-MM-DD HH:mm:ss');
 
                     $.ajax({
-                        url:"/calender/action",
+                        url:"/events/action",
                         type:"POST",
                         data:{
                             title: title,
@@ -93,7 +93,7 @@
                 var title = event.title;
                 var id = event.id;
                 $.ajax({
-                    url:"/calender/action",
+                    url:"/events/action",
                     type:"POST",
                     data:{
                         title: title,
@@ -116,7 +116,7 @@
                 var title = event.title;
                 var id = event.id;
                 $.ajax({
-                    url:"/calender/action",
+                    url:"/events/action",
                     type:"POST",
                     data:{
                         title: title,
@@ -131,27 +131,13 @@
                         alert("Event Updated Successfully");
                     }
                 })
-            },
+          },
 
             eventClick:function(event)
             {
-                if(confirm("Are you sure you want to remove it?"))
-                {
-                    var id = event.id;
-                    $.ajax({
-                        url:"/calender/action",
-                        type:"POST",
-                        data:{
-                            id:id,
-                            type:"delete"
-                        },
-                        success:function(response)
-                        {
-                            calendar.fullCalendar('refetchEvents');
-                            alert("Event Deleted Successfully");
-                        }
-                    })
-                }
+                var id = event.id;
+                window.location.href=`/events/${id}`
+
             }
         });
 

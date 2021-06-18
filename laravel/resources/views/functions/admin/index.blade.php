@@ -6,7 +6,7 @@
 
     <nav class="level">
         <div class="level-item has-text-centered">
-            <a href="/calender">
+            <a href="/events">
             <div class="box">
                 <p class="heading">Agenda</p>
                 <img src="/img/agenda-icon.png">
