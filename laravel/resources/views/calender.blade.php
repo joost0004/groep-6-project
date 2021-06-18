@@ -48,7 +48,7 @@
             }
         });
 
-        var calendar = $('#calendar').fullCalendar({
+        $('#calendar').fullCalendar({
             editable:true,
             header:{
                 left:'prev,next today',
@@ -56,91 +56,13 @@
                 right:'month,agendaWeek,agendaDay'
             },
             events:'/events',
-            selectable:true,
-            selectHelper: true,
-            select:function(start, end, allDay)
-            {
-                var title = prompt('Event Title:');
-
-                if(title)
-                {
-                    var start = $.fullCalendar.formatDate(start, 'Y-MM-DD HH:mm:ss');
-
-                    var end = $.fullCalendar.formatDate(end, 'Y-MM-DD HH:mm:ss');
-
-                    $.ajax({
-                        url:"/events/action",
-                        type:"POST",
-                        data:{
-                            title: title,
-                            start: start,
-                            end: end,
-                            type: 'add'
-                        },
-                        success:function(data)
-                        {
-                            calendar.fullCalendar('refetchEvents');
-                            alert("Event Created Successfully");
-                        }
-                    })
-                }
-            },
-            editable:true,
-            eventResize: function(event, delta)
-            {
-                var start = $.fullCalendar.formatDate(event.start, 'Y-MM-DD HH:mm:ss');
-                var end = $.fullCalendar.formatDate(event.end, 'Y-MM-DD HH:mm:ss');
-                var title = event.title;
-                var id = event.id;
-                $.ajax({
-                    url:"/events/action",
-                    type:"POST",
-                    data:{
-                        title: title,
-                        start: start,
-                        end: end,
-                        id: id,
-                        type: 'update'
-                    },
-                    success:function(response)
-                    {
-                        calendar.fullCalendar('refetchEvents');
-                        alert("Event Updated Successfully");
-                    }
-                })
-            },
-            eventDrop: function(event, delta)
-            {
-                var start = $.fullCalendar.formatDate(event.start, 'Y-MM-DD HH:mm:ss');
-                var end = $.fullCalendar.formatDate(event.end, 'Y-MM-DD HH:mm:ss');
-                var title = event.title;
-                var id = event.id;
-                $.ajax({
-                    url:"/events/action",
-                    type:"POST",
-                    data:{
-                        title: title,
-                        start: start,
-                        end: end,
-                        id: id,
-                        type: 'update'
-                    },
-                    success:function(response)
-                    {
-                        calendar.fullCalendar('refetchEvents');
-                        alert("Event Updated Successfully");
-                    }
-                })
-          },
 
             eventClick:function(event)
             {
                 var id = event.id;
                 window.location.href=`/events/${id}`
-
             }
         });
-
     });
 
 </script>
