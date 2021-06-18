@@ -22,7 +22,7 @@
                 <div class="control">
                     <form
                     method="POST"
-                    action="/registration/email"
+                    action="/registration/{{ $registration->id }}/email"
                     class="bg-white p-6 rounded shadow-md" style="width: 300px">
                     @csrf
                     <button type="submit" class="button is-link">
