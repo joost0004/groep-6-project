@@ -11,9 +11,9 @@ class EmailMessageController extends Controller
 {
     public function store(Registration $registration)
     {
-        $email = DB::table('registrations')->value('email');
 
-        Mail::to($email)
+
+        Mail::to($registration->email)
             ->send(new AgendaUitnodiging());
 
         return redirect('/registration');
