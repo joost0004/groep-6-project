@@ -1,20 +1,11 @@
 @extends ('layout')
 
 @section ('content')
-<h2>Update a registration</h2>
+
 
     <form method="POST" action="/registration/{{ $registration->id }}">
         @csrf
         @method('PUT')
-
-        <div class="mt-4">
-            <input type="radio" id="customer" name="function" value="customer">
-            <label for="customer">Klant</label><br>
-            <input type="radio" id="werknemer" name="function" value="werknemer">
-            <label for="werknemer">Werknemer</label><br>
-            <input type="radio" id="admin" name="function" value="admin">
-            <label for="admin">Admin</label>
-        </div>
 
         <div class="field">
             <label class="label" for="voornaam">Voornaam</label>
@@ -30,11 +21,19 @@
             </div>
         </div>
 
-        <div class="field">
-            <label class="label" for="geslacht">Geslacht</label>
-            <div class="control">
-                <input class="input" type="text" name="geslacht" id="geslacht" value="{{ $registration->geslacht}}">
-            </div>
+        <div class='field'>
+            <label class='label' for='geslacht'>Geslacht</label>
+
+        <div class="mt-4">
+            <input type="radio" id="man" name="geslacht" value="man" @if ($registration->geslacht === 'man')
+                checked
+            @endif>
+            <label for="man">Man</label><br>
+            <input type="radio" id="vrouw" name="geslacht" value="vrouw" @if ($registration->geslacht === 'vrouw')
+            checked
+        @endif>
+            <label for="vrouw">Vrouw</label><br>
+        </div>
         </div>
 
         <div class="field">
@@ -72,17 +71,28 @@
             </div>
         </div>
 
-        <div class="field is-grouped">
-            <div class="control">
-                <button class="button is-link" type="submit">Submit</button>
-            </div>
-        </div>
+
+
+        <section class="section">
+            <nav class="level">
+                <p class=" has-text-centered">
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <button class="button is-link" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </p>
+
+
 
     </form>
 
-    <form method="POST" action="/registration/{{$registration->id}}">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="button is-link">Delete</button>
-    </form>
+                <p class=" has-text-centered">
+                    <form method="POST" action="/registration/{{$registration->id}}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="button is-link">Delete</button>
+                    </form>
+                </p>
+            </nav>
 @endsection

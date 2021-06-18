@@ -2,17 +2,38 @@
 
 @section ('content')
 
-    <form action="/registration">
-        <button type="submit" class='button is-link'>Ga terug</button>
-    </form>
 
-    <form
-        method="POST"
-        action="/registration/{{ $registration->id }}/email"
+    <nav class="level">
+        <p class=" has-text-centered">
+                <div class="control">
+                    <form action="/">
+                        <button type="submit" class='button is-link'>Ga terug</button>
+                    </form>
+            </div>
+        </p>
+        <p class=" has-text-centered">
+                <div class="control">
+                    <form action="/registration/{{$registration->id}}/edit">
+                        <button type="submit" class='button is-link'>Aanpassen</button>
+                    </form>
+            </div>
+        </p>
+        <p class=" has-text-centered">
+                <div class="control">
+                    <form
+                    method="POST"
+                    action="/registration/email"
+                    class="bg-white p-6 rounded shadow-md" style="width: 300px">
+                    @csrf
+                    <button type="submit" class="button is-link">
+                        Send test email
+                    </button>
+                </form>
+            </div>
+        </p>
+    </nav>
+    <section class="section">
 
-        >@csrf
-        <button type="submit" class='button is-link'>Kalender uitnodiging versturen</button>
-    </form>
 
     <table class="table">
         <thead>

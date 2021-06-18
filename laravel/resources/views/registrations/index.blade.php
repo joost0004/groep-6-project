@@ -1,13 +1,27 @@
 @extends ('layout')
 
 @section ('content')
-
-    <form action="/">
-        <button type="submit" class='button is-link'>Ga terug</button>
-    </form>
-    <form action="/registration/create">
-        <button type="submit" class='button is-link'>Klant aanmaken</button>
-    </form>
+        <nav class="level">
+            <p class=" has-text-centered">
+                <div class="field is-grouped">
+                    <div class="control">
+                        <form action="/">
+                            <button type="submit" class='button is-link'>Ga terug</button>
+                        </form>
+                    </div>
+                </div>
+            </p>
+            <p class=" has-text-centered">
+                <div class="field is-grouped">
+                    <div class="control">
+                        <form action="/registration/create">
+                            <button type="submit" class="button is-link">Klant Aanmaken</button>
+                        </form>
+                    </div>
+                </div>
+            </p>
+        </nav>
+        <section class="section">
 
     <table class="table">
         <thead>

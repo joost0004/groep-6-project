@@ -47,19 +47,15 @@
                 <div class='field'>
                     <label class='label' for='geslacht'>Geslacht</label>
 
-                    <div class='control'>
-                        <input
-                            class='input @error('geslacht') is-danger @enderror'
-                            type='text'
-                            name='geslacht'
-                            id='geslacht'
-                            value='{{old('geslacht')}}'>
-
-                        @error('geslacht')
-                        <p class="help is-danger">{{$errors->first('geslacht')}}</p>
-                        @enderror
-                    </div>
+                <div class="mt-4">
+                    <input type="radio" id="man" name="geslacht" value="man">
+                    <label for="man">Man</label><br>
+                    <input type="radio" id="vrouw" name="geslacht" value="vrouw">
+                    <label for="vrouw">Vrouw</label><br>
                 </div>
+                </div>
+
+
 
                 <div class='field'>
                     <label class='label' for='postcode'>Postcode</label>
