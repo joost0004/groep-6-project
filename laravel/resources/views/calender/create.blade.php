@@ -4,8 +4,20 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
 
+
+
 <div id='wrapper'>
+
     <div id='page' class='container'>
+
+        <div class="field is-grouped">
+            <div class="control">
+                <form action="/events">
+                    <button type="submit" class='button is-link'>Ga terug</button>
+                </form>
+            </div>
+        </div>
+
         <h1 class='has-text-weight-bold is-size-8'>Nieuwe Afspraak</h1>
 
 <form method='POST' action="/events">
@@ -51,6 +63,7 @@
 
    <div class='field'>
     <a class='has-text-weight-bold is-size-4' for='ammount'>Aantal personen</a>
+    <p>Een uur per persoon.</p>
 </div>
 
    <div class="select">

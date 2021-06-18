@@ -28,7 +28,12 @@
         </tr>
         </tbody>
     </table>
-        <button type="submit" class='button is-link'>Afspraak annuleren</button>
-        <button type="submit" class='button is-link'>Afspraak wijzigen</button>
+    <p class="has-text-centered">
+        <form method="POST" action="/events/{{$event->id}}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="button is-link">Afspraak verwijderen</button>
+        </form>
+    </p>
 
 @endsection

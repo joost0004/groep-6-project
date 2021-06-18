@@ -3,6 +3,19 @@
 @section ('content')
 
 
+<div id='wrapper'>
+    <div id='page' class='container'>
+
+        <div class="field is-grouped">
+            <div class="control">
+                <form action="/registration/{{$registration->id}}">
+                    <button type="submit" class='button is-link'>Ga terug</button>
+                </form>
+            </div>
+        </div>
+
+        <h1 class='has-text-weight-bold is-size-4'>Klant Aanpassen</h1>
+
     <form method="POST" action="/registration/{{ $registration->id }}">
         @csrf
         @method('PUT')
@@ -95,4 +108,7 @@
                     </form>
                 </p>
             </nav>
+
+        </div>
+    </div>
 @endsection

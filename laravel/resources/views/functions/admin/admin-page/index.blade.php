@@ -2,10 +2,27 @@
 
 @section ('content')
 
-    <form action="/">
-        <button type="submit" class='button is-link'>Ga terug</button>
-    </form>
-
+<nav class="level">
+    <p class=" has-text-centered">
+        <div class="field is-grouped">
+            <div class="control">
+                <form action="/">
+                    <button type="submit" class='button is-link'>Ga terug</button>
+                </form>
+            </div>
+        </div>
+    </p>
+    <p class=" has-text-centered">
+        <div class="field is-grouped">
+            <div class="control">
+                <form action="/admin/create">
+                    <button type="submit" class="button is-link">Gebruiker Aanmaken</button>
+                </form>
+            </div>
+        </div>
+    </p>
+</nav>
+<section class="section">
     <table class="table">
         <thead>
         <tr>

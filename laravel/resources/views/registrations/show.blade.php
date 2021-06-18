@@ -6,7 +6,7 @@
     <nav class="level">
         <p class=" has-text-centered">
                 <div class="control">
-                    <form action="/">
+                    <form action="/registration">
                         <button type="submit" class='button is-link'>Ga terug</button>
                     </form>
             </div>
@@ -26,7 +26,7 @@
                     class="bg-white p-6 rounded shadow-md" style="width: 300px">
                     @csrf
                     <button type="submit" class="button is-link">
-                        Send test email
+                        Uitnodiging versturen
                     </button>
                 </form>
             </div>
@@ -61,8 +61,4 @@
             </tr>
         </tbody>
     </table>
-    <form action="/registration/{{$registration->id}}/edit">
-        <button type="submit" class='button is-link'>Aanpassen</button>
-    </form>
-
 @endsection

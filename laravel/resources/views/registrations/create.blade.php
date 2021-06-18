@@ -4,6 +4,15 @@
 
     <div id='wrapper'>
         <div id='page' class='container'>
+
+            <div class="field is-grouped">
+                <div class="control">
+                    <form action="/registration">
+                        <button type="submit" class='button is-link'>Ga terug</button>
+                    </form>
+                </div>
+            </div>
+
             <h1 class='has-text-weight-bold is-size-4'>Klant Aanmaken</h1>
 
             <form method='POST' action="/registration">

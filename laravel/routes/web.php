@@ -39,7 +39,7 @@ require __DIR__.'/auth.php';
 // CRUD Routing
 Route::resource('/registration', RegistrationController::class)->middleware(['auth']);
 Route::resource('/events', Calender2Controller::class)->middleware(['auth']);
-Route::post('events/action', [CalenderController::class, 'action'])->middleware(['auth']);
+// Route::post('events/action', [CalenderController::class, 'action'])->middleware(['auth']);
 
 
 

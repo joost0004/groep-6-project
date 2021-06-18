@@ -1,9 +1,12 @@
 @component('mail::message')
-    # Kledingbank Zeeland Agenda Uitnodiging
+# Hallo!
 
-    Klik op de knop om een afspraak in te plannen voor de Kledingbank.
+U bent bij deze uitgenodigd om een afspraak te maken bij de kledingbank.
 
-    @component('mail::button', ['url' => 'http://127.0.0.6/calender/create'])
-        Kledingbank Zeeland
-    @endcomponent
+@component('mail::button', ['url' => 'http://127.0.0.2/events/create'])
+Afspraak Maken
+@endcomponent
+
+Met vriendelijke groeten,<br>
+Kledingbank Zeeland
 @endcomponent

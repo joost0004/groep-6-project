@@ -123,7 +123,7 @@ class Calender2Controller extends Controller
     public function destroy(Event $event)
     {
         $event->delete();
-        return redirect('/calender');
+        return redirect('/events');
     }
 
     // Function checks for any overlap in start or end value of existing events in the database.
