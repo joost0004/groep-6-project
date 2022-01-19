@@ -2,7 +2,8 @@
 <html>
     <head>
     <title>Kledingbank Project</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"> --}}
+    <link rel="stylesheet" href="css/mystyles.css">
     </head>
     <body>
 
